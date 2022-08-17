@@ -33,11 +33,18 @@ class Solution(object):
         return merged_arr
 
     def findMedian(self, arr):
+        """
+        
+        :param arr:
+        :return:
+        """
         if len(arr) % 2 == 1:
-            middle_val = arr[len(arr) // 2]
+            middle_val = arr[len(arr) // 2 - 1]
             return arr[middle_val]
         else:
             middle_vals = [arr[len(arr) // 2 - 1], arr[len(arr) // 2]]
             print(middle_vals)
             median = (middle_vals[0] + middle_vals[1]) / 2
             return median
+
+print(Solution().findMedianSortedArrays([1, 2], [3, 4]))
