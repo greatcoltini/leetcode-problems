@@ -1,63 +1,29 @@
-def lengthOfLongestSubstring(s):
-    """
-    :type s: str
-    :rtype: int
-    """
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        counter = 0
+        unique_chars = []
+        current_highest = 0
 
-    len_substring = 0
-    current_highest = 0
-    un_unique = []
+        while counter < len(s):
 
-    for char in s:
+            # traverse substring based on counter location
+            for i in range(counter, len(s)):
+                char = s[i]
+                if char not in unique_chars:
+                    unique_chars.append(char)
+                else:
+                    break
 
-        # traverse until non-unique char
-        if char not in un_unique:
-            len_substring += 1
-            un_unique.append(char)
-        # once we have a non-unique char, we set this as a substring
-        # and continue traversing the string
-        else:
-            if len_substring > current_highest:
-                current_highest = len_substring
-            un_unique = [char]
+            if len(unique_chars) > current_highest:
+                current_highest = len(unique_chars)
+            unique_chars = []
+            counter += 1
 
-            # reset the un_unique counter and continue from this letter...
-            len_substring = 1
+        # return the highest substring
+        return current_highest
 
-    # return the highest substring
-
-    if current_highest < len_substring:
-        current_highest = len_substring
-
-    return current_highest
-
-print(lengthOfLongestSubstring("dvdf"))
-
-def alt_lengthOfLongestSubstring(s):
-    """
-    :type s: str
-    :rtype: int
-    """
-
-    len_substring = 0
-    current_highest = 0
-    un_unique = []
-    counter = 0
-    start_point = 0
-
-    for char in s:
-
-
-
-    # return the highest substring
-
-    if current_highest < len_substring:
-        current_highest = len_substring
-
-    return current_highest
-
-
-
-print(alt_lengthOfLongestSubstring("dvdf"))
-print(alt_lengthOfLongestSubstring("aab"))
-print(alt_lengthOfLongestSubstring("abcaabc"))
+print(Solution().lengthOfLongestSubstring("jbpnbwwd"))
