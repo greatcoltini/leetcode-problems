@@ -34,7 +34,7 @@ class Solution(object):
 
     def findMedian(self, arr):
         """
-        
+
         :param arr:
         :return:
         """
