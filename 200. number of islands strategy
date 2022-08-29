@@ -1,0 +1,55 @@
+
+
+1 0 1 0 1
+1 1 0 0 1
+1 1 0 1 1
+1 1 1 1 1
+0 0 0 0 0
+0 1 0 0 0
+0 0 0 0 0
+output = 2
+
+0 0 0 0
+1 1 0 0
+1 1 0 0
+0 0 0 0
+output = 1
+
+0 1 1 0
+0 0 1 0
+0 0 0 0
+0 1 1 0
+0 0 0 0 
+output = 2
+
+
+strategy:
+parse through matrix:
+if we encounter a '1' we have an island
+	- first check if element is already part of the island matrix:
+		- if so; pass
+	- else
+		- add element to 'island' matrix
+		- check neighbouring [i][j] of matrix
+		- if '1', continue island on
+			- check neighbouring [i][j] of matrix
+			- if '1', continue island on
+
+
+	
+
+
+who are the neighbours to [i][j]?
+
+[0][0] -> neighbours are [0][1] and [1][0]
+
+[2][0] -> neighbours are [1][0], [3][0], [2][1]
+
+neighbours are [i-1][j], [i+1][j], [i][j-1], [i][j+1]
+
+
+[["1","1","1","1","0"],
+ ["1","1","0","1","0"],
+ ["1","1","0","0","0"],
+ ["0","0","0","0","0"]]
+
