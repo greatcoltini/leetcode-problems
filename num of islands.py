@@ -21,5 +21,5 @@ class Solution:
                     res += 1
                     turn_to_dust(i, j)
 
-        
+
         return res
