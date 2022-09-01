@@ -1,20 +1,63 @@
 class Solution(object):
     def pacificAtlantic(self, heights):
-        """
-        :type heights: List[List[int]]
-        :rtype: List[List[int]]
-        """
-        reachOcean = [[]] # list of whether or not the cell has been visited; 0 = not visited, 1 = visited no exit,
-        for i in range(len(heights)):
-            for j in range(len(heights)):
-                if self.canTouchOcean(heights[i][j], heights, i, j):
-                    reachOcean.append([i, j])
+        len_rows, len_cols = len(heights), len(heights[0])
+
+        # perform depth first search, creating paths where we can traverse
+        def dfs(i, j, prev_height, visited_cells):
+            if i < 0 or i == len_rows or j < 0 or j == len_cols:
+                # out of bounds
+                return
+
+            if (i, j) in visited_cells:
+                # already visited
+                return
+
+            height = heights[i][j]
+
+            if height < prev_height:
+                # water can't flow to a higher height
+                return
+
+            # ocean is reachable from current coordinate
+            visited_cells.add((i, j))
+
+            # all four directions
+            dfs(i + 1, j, height, visited_cells)
+            dfs(i - 1, j, height, visited_cells)
+            dfs(i, j + 1, height, visited_cells)
+            dfs(i, j - 1, height, visited_cells)
+
+        pacific_coords = set()
+
+        # top row
+        for j in range(len_cols):
+            dfs(0, j, 0, pacific_coords)
+
+        # left col
+        for i in range(len_rows):
+            dfs(i, 0, 0, pacific_coords)
+
+        atlantic_coords = set()
+
+        # right col
+        for i in range(len_rows):
+            dfs(i, len_cols - 1, 0, atlantic_coords)
+
+        # bottom row
+        for j in range(len_cols):
+            dfs(len_rows - 1, j, 0, atlantic_coords)
+
+        # intersection of coords reachable from both Pacific and Atlantic
+        return list(pacific_coords & atlantic_coords)
 
 
-    def canTouchOcean(self, height, heights, i, j):
-        if i == 0 or j == 0 or i == len(heights) or j == len(heights):
-            return True
-        
+print(Solution().pacificAtlantic([[1,2,2,3,5],
+                                  [3,2,3,4,4],
+                                  [2,4,5,3,1],
+                                  [6,7,1,4,5],
+                                  [5,1,1,2,4]]))
+
+
 
 
 
