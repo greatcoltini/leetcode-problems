@@ -21,6 +21,12 @@ class Solution(object):
         return count
 
     def isGoodNode(self, node, highest):
+        """
+        Returns the number of good nodes in the tree path
+        :param node: TreeNode
+        :param highest: integer - highest value occuring in that tree
+        :return:
+        """
         # if our current node value is higher or eq to highest, we add 1 to good nodes
         goodNode = 0
 
@@ -40,7 +46,5 @@ class Solution(object):
 
         return goodNode
 
-
-[9,null,3,6]
-test_tree = TreeNode(9, )
+test_tree = TreeNode(1, TreeNode(0), TreeNode(1, TreeNode(2), TreeNode(1)))
 print(Solution().goodNodes(test_tree))
