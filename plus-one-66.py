@@ -4,12 +4,21 @@ class Solution(object):
         :type digits: List[int]
         :rtype: List[int]
         """
-        digits[-1] += 1
         numbers_str = ""
+        numbers_list = []
+        
+        # add to str
 
         for digit in digits:
             numbers_str += str(digit)
+            
+        number_int = int(numbers_str)
+        
+        number_int += 1
+        
+        numbers_str = str(numbers_int)
+        
+        for char in numbers_str:
+            numbers_list.append(char)
 
-        print(numbers_str)
-
-        return numbers_str
+        return numbers_list
