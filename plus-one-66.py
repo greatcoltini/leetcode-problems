@@ -22,6 +22,24 @@ class Solution(object):
             numbers_list.append(int(char))
 
         return numbers_list
+
+# recursive soln
+def plusOneRec(digits):
+    """ we take in an array of integers, increment it by one, and return the outcome.
+    
+    i.e. 
+    [1, 2, 3] -> [1, 2, 4]
+    [1, 2, 9] -> [1, 3, 0]
+
+    Args:
+        digits (list[int]): list of integers to increment by one
+    """
+    
+    if digits[-1] == 9:
+        return plusOneRec[digits:-2] + 0
+    else:
+        return digits[-2] + [digits[-1] + 1]
+        
     
     
 # class Solution(object):
