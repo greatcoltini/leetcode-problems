@@ -23,10 +23,10 @@ class Solution(object):
                     else:
                         nums1[counter - 1] = nums1[index_1]
                         index_1 = index_1 - 1
-                elif index_1 < 0 and index_2 > 0:
+                elif index_1 < 0 and index_2 >= 0:
                     nums1[counter - 1] = nums2[index_2]
                     index_2 = index_2 - 1
-                elif index_1 > 0 and index_2 < 0:
+                elif index_1 >= 0 and index_2 < 0:
                     nums1[counter - 1] = nums1[index_1]
                     index_1 = index_1 - 1
                 counter = counter - 1
