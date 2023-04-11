@@ -12,10 +12,9 @@ def partitionString(s):
     # try to remove s one at a time
     s = list(s)
     while s:
-        print(s)
         for string in partition_string:
             if s[0] not in string:
-                string += s[0]
+                string.append(s[0])
                 s = s[1:]
                 print(partition_string)
                 break
