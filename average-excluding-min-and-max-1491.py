@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 class Solution(object):
     def average(self, salary):
         """
@@ -17,8 +19,9 @@ class Solution(object):
         for individual in salary:
             counter += 1
             salary_total += individual
+            print(salary_total)
         
-        salary_avg = salary_total / counter
+        salary_avg = Decimal(salary_total) / Decimal(counter)
         
         return salary_avg
         
